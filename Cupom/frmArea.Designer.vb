@@ -28,10 +28,10 @@ Partial Class frmArea
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1008, 729)
+        Me.ClientSize = New System.Drawing.Size(800, 417)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "frmArea"
-        Me.Text = "frmArea"
+        Me.Text = "Coupon"
         Me.ResumeLayout(False)
 
     End Sub

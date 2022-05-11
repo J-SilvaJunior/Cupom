@@ -10,14 +10,12 @@
     End Sub
 
     Private Sub btnLogar_Click(sender As Object, e As EventArgs) Handles btnLogar.Click
-
         If LogIn(txtCod.Text) Then
             frmArea.Show()
             Me.Hide()
         Else
             MsgBox("Não foi encontrado nenhum cadastro")
         End If
-
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click

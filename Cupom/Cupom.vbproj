@@ -76,6 +76,7 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="classModule.vb" />
     <Compile Include="DB.vb" />
     <Compile Include="Form1.vb">
       <SubType>Form</SubType>

@@ -1,8 +1,13 @@
 ﻿Imports MySql.Data
 Module DB
+    'string de conexão
     Dim connStr As String = "server=127.0.0.1;database=sistema;Uid=root;Pwd=OMNI2022;"
+
+    'instância de classe de conexão
     Public conn As MySqlClient.MySqlConnection = New MySqlClient.MySqlConnection(connStr)
+
     Public cmd As MySqlClient.MySqlCommand = New MySqlClient.MySqlCommand("", conn)
+
     Public funcionarioAtual As Funcionario
 
     Function LogIn(cod As String) As Boolean
@@ -35,27 +40,7 @@ Module DB
 End Module
 
 Module esquemario
-    Class Funcionario
-        Private Property _cod_func As String
-        Private Property _nome As String
-        Private Property _cargo As String
 
-        Sub New(dr As MySqlClient.MySqlDataReader)
-            'dr.Read()
-            Me._cod_func = dr("codigo_funcionario")
-            Me._nome = dr("nome")
-            Me._cargo = dr("cargo")
-        End Sub
-
-        Sub myself()
-            MessageBox.Show(_cod_func & " " & _nome & " " & _cargo)
-        End Sub
-
-
-
-
-
-    End Class
 End Module
 
 
