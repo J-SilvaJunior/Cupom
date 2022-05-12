@@ -14,7 +14,7 @@
             frmArea.Show()
             Me.Hide()
         Else
-            MsgBox("Não foi encontrado nenhum cadastro")
+            MsgBox("Foi encontrado um problema: Usuário já logado ou não encontrado.")
         End If
     End Sub
 

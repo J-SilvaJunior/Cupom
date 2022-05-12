@@ -13,34 +13,49 @@ Module DB
     Function LogIn(cod As String) As Boolean
         cmd.CommandText = String.Format("select * from funcionario where codigo_funcionario = '{0}'", cod)
         Dim dr As MySqlClient.MySqlDataReader
+        Dim encontrado As Boolean = False
         Try
             conn.Open()
             dr = cmd.ExecuteReader()
             dr.Read()
-            If dr.IsDBNull(1) Then
-
+            If dr("codigo_funcionario") = "" Then
                 cmd.CommandText = ""
-                Return False
+                encontrado = False
             Else
-                funcionarioAtual = New Funcionario(dr)
-                cmd.CommandText = ""
-                Return True
+                encontrado = True
             End If
+        Catch ex As Exception
+        End Try
 
+        If Not encontrado Then
+            cmd.CommandText = ""
+            conn.Close()
+            Return False
+        Else
+            funcionarioAtual = New Funcionario(dr)
+            cmd.CommandText = ""
+            conn.Close()
+            Return True
+        End If
+
+
+        Return False
+    End Function
+
+    Function retornarProduto(cod As String, qnt As Double) As Produto
+        cmd.CommandText = String.Format("select * from produto_ref where cod_produto = '{0}'", cod)
+        Dim dr As MySqlClient.MySqlDataReader
+        Try
+            conn.Open()
+            dr = cmd.ExecuteReader()
+            dr.Read()
 
         Catch ex As Exception
 
-            MessageBox.Show(ex.Message)
-
         End Try
-
-        conn.Close()
-        Return False
     End Function
-End Module
-
-Module esquemario
 
 End Module
+
 
 

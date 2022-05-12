@@ -3,14 +3,14 @@
         Private Property _cod_barras As String
         Private Property _descricao As String
         Private Property _qnt_embalagem As Double
-        Private Property _preco As Double
+        Public Property preco As Double
         Private Property _fornecedor As String
 
         Sub New(dr As MySql.Data.MySqlClient.MySqlDataReader)
             Me._cod_barras = dr("cod_produto")
             Me._descricao = dr("descricao")
             Me._qnt_embalagem = Double.Parse(dr("qnt_embalagem"))
-            Me._preco = Double.Parse(dr("preco"))
+            Me.preco = Double.Parse(dr("preco"))
             Me._fornecedor = dr("fornecedor")
         End Sub
 
@@ -20,14 +20,23 @@
         Private Property _diamesano As Date
         Private Property _hora As String
         Public Property lista As List(Of Produto)
-        Public Property precoTotal As Double
+        Private Property precoTotal As Double
         Public Property cliente As String
 
-        Sub New()
+        Sub New(cliente As String)
             Me._diamesano = Now.Date
             Me._hora = Now.TimeOfDay.ToString
+            Me._precoTotal = 0
+            Me._cliente = cliente
 
         End Sub
+
+        Sub adicionarProduto(prod As Produto)
+            Me.precoTotal = Me.precoTotal + prod.preco
+            lista.Add(prod)
+
+        End Sub
+
 
     End Class
 
