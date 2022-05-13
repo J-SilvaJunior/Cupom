@@ -1,4 +1,4 @@
-﻿Public Class Form1
+﻿Public Class frmLogin
     Private Sub TextBox1_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtCod.KeyPress
         If e.KeyChar = Chr(13) Then
             btnLogar.PerformClick()
@@ -11,8 +11,10 @@
 
     Private Sub btnLogar_Click(sender As Object, e As EventArgs) Handles btnLogar.Click
         If LogIn(txtCod.Text) Then
-            frmArea.Show()
             Me.Hide()
+            Dim frmAreaNew = New frmArea()
+            frmAreaNew.Show()
+
         Else
             MsgBox("Foi encontrado um problema: Usuário já logado ou não encontrado.")
         End If

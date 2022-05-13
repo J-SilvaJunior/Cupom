@@ -1,4 +1,7 @@
 ﻿Module classModule
+
+    Public optionImg As Bitmap = Image.FromFile("recursos\options.jpg")
+
     Class Produto
         Private Property _cod_barras As String
         Private Property _descricao As String
@@ -43,7 +46,7 @@
     Class Funcionario
         Private Property _cod_func As String
         Private Property _nome As String
-        Private Property _cargo As String
+        Public Property _cargo As String
 
         Sub New(dr As MySql.Data.MySqlClient.MySqlDataReader)
             'dr.Read()
