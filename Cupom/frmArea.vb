@@ -26,7 +26,7 @@
     End Sub
 
     Private Sub btnPDV_Click(sender As Object, e As EventArgs) Handles btnPDV.Click
-        'frmPDV.show()
+        frmPdv.Show()
     End Sub
 
     Private Sub btnEstoque_Click(sender As Object, e As EventArgs) Handles btnEstoque.Click

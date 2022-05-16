@@ -85,6 +85,18 @@
       <DependentUpon>Form1.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmFun.Designer.vb">
+      <DependentUpon>frmFun.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmFun.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPDV.Designer.vb">
+      <DependentUpon>frmPDV.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmPDV.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmArea.Designer.vb">
       <DependentUpon>frmArea.vb</DependentUpon>
     </Compile>
@@ -111,6 +123,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFun.resx">
+      <DependentUpon>frmFun.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPDV.resx">
+      <DependentUpon>frmPDV.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmArea.resx">
       <DependentUpon>frmArea.vb</DependentUpon>
