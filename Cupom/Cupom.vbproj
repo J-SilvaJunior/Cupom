@@ -85,6 +85,12 @@
       <DependentUpon>Form1.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FrmAviso.Designer.vb">
+      <DependentUpon>FrmAviso.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmAviso.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmFun.Designer.vb">
       <DependentUpon>frmFun.vb</DependentUpon>
     </Compile>
@@ -124,6 +130,9 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmAviso.resx">
+      <DependentUpon>FrmAviso.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmFun.resx">
       <DependentUpon>frmFun.vb</DependentUpon>
     </EmbeddedResource>
@@ -152,6 +161,9 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="pctCoupon.Image.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

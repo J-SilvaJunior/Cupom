@@ -1,13 +1,17 @@
 ﻿Public Class frmArea
+    Dim waitload As Short = 0
+    Sub New()
+        ' Esta chamada é requerida pelo designer.
+        InitializeComponent()
+        ' Adicione qualquer inicialização após a chamada InitializeComponent().
+
+    End Sub
     Private Sub frmArea_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
         frmLogin.Show()
     End Sub
 
     Private Sub frmArea_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-        PictureBox1.Image = New Bitmap(optionImg)
-        funcionarioAtual.myself()
-        If funcionarioAtual._cargo = "Caixa" Then
+        If funcionarioAtual._cargo = "Vendedor" Then
             btnRelatorio.Visible = False
             btnEstoque.Visible = False
         End If
@@ -15,6 +19,8 @@
             btnPDV.Visible = False
             btnRelatorio.Visible = False
         End If
+        Timer1.Enabled = True
+
     End Sub
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
@@ -35,5 +41,20 @@
 
     Private Sub btnRelatorio_Click(sender As Object, e As EventArgs) Handles btnRelatorio.Click
         'frmRelatorio.show()
+    End Sub
+
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        If waitload <= 3 Then
+            waitload += 1
+        End If
+        If waitload > 3 Then
+            Panel2.Size = New Size(0, 0)
+            Timer1.Enabled = False
+
+        End If
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        frmFun.Show()
     End Sub
 End Class

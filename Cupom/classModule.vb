@@ -1,6 +1,10 @@
 ﻿Module classModule
 
-    Public optionImg As Bitmap = Image.FromFile("recursos\options.jpg")
+    Public Sub erro(ex As String)
+        Dim aviso As FrmAviso = New FrmAviso(ex)
+        aviso.ShowDialog()
+        aviso.Dispose()
+    End Sub
 
     Class Produto
         Private Property _cod_barras As String

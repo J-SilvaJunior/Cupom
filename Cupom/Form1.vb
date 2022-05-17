@@ -11,9 +11,10 @@
 
     Private Sub btnLogar_Click(sender As Object, e As EventArgs) Handles btnLogar.Click
         If LogIn(txtCod.Text) Then
+            txtCod.Text = ""
             Me.Hide()
-            Dim frmAreaNew = New frmArea()
-            frmAreaNew.Show()
+            'Dim frmAreaNew = New frmArea()
+            frmArea.Show()
 
         Else
             MsgBox("Foi encontrado um problema: Usuário já logado ou não encontrado.")
