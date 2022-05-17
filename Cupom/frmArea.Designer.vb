@@ -143,12 +143,13 @@ Partial Class frmArea
         '
         Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.Button1.Font = New System.Drawing.Font("Century Gothic", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.Location = New System.Drawing.Point(572, 258)
+        Me.Button1.Location = New System.Drawing.Point(374, 258)
         Me.Button1.Name = "Button1"
         Me.Button1.Padding = New System.Windows.Forms.Padding(2, 0, 0, 0)
-        Me.Button1.Size = New System.Drawing.Size(33, 33)
+        Me.Button1.Size = New System.Drawing.Size(231, 33)
         Me.Button1.TabIndex = 9
-        Me.Button1.Text = "⚙"
+        Me.Button1.Text = "⚙ Cadastrar usuário"
+        Me.Button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.Button1.UseVisualStyleBackColor = True
         '
         'frmArea

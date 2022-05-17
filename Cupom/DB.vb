@@ -15,7 +15,8 @@ Module DB
 
     Public produtoAtual As Produto
     '---------------------------------------------------------------------------------------
-
+    '                           Funções de consumo do Banco de dados
+    '---------------------------------------------------------------------------------------
     Function LogIn(cod As String) As Boolean
         cmd.CommandText = String.Format("select * from funcionario where codigo_funcionario = '{0}'", cod)
         Dim dr As MySqlClient.MySqlDataReader
@@ -57,7 +58,7 @@ Module DB
             dr = cmd.ExecuteReader()
             If dr.HasRows() Then
                 dr.Read()
-                produtoAtual = New Produto(dr)
+                produtoAtual = New Produto(dr, qnt)
                 zerarComando()
                 fecharBanco()
                 Return True

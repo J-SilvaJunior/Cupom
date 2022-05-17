@@ -1,28 +1,31 @@
 ﻿Module classModule
-
+    '---------------------------------------------------------------------
+    '                       Subrotinas customizadas
+    '---------------------------------------------------------------------
     Public Sub erro(ex As String)
         Dim aviso As FrmAviso = New FrmAviso(ex)
         aviso.ShowDialog()
         aviso.Dispose()
     End Sub
-
+    '---------------------------------------------------------------------
+    '                       Classes para estruturação
+    '---------------------------------------------------------------------
     Class Produto
         Private Property _cod_barras As String
         Private Property _descricao As String
-        Private Property _qnt_embalagem As Double
+        Public Property qnt_item As Double
         Public Property preco As Double
         Private Property _fornecedor As String
 
-        Sub New(dr As MySql.Data.MySqlClient.MySqlDataReader)
+        Sub New(dr As MySql.Data.MySqlClient.MySqlDataReader, qnt As Double)
             Me._cod_barras = dr("cod_produto")
             Me._descricao = dr("descricao")
-            Me._qnt_embalagem = Double.Parse(dr("qnt_embalagem"))
+            Me.qnt_item = qnt
             Me.preco = Double.Parse(dr("preco"))
             Me._fornecedor = dr("fornecedor")
         End Sub
 
     End Class
-
     Class Venda
         Private Property _diamesano As Date
         Private Property _hora As String
@@ -41,12 +44,8 @@
         Sub adicionarProduto(prod As Produto)
             Me.precoTotal = Me.precoTotal + prod.preco
             lista.Add(prod)
-
         End Sub
-
-
     End Class
-
     Class Funcionario
         Private Property _cod_func As String
         Private Property _nome As String

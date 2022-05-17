@@ -14,11 +14,14 @@
         If funcionarioAtual._cargo = "Vendedor" Then
             btnRelatorio.Visible = False
             btnEstoque.Visible = False
+            Button1.Visible = False
         End If
         If funcionarioAtual._cargo = "Estoquista" Then
             btnPDV.Visible = False
             btnRelatorio.Visible = False
+            Button1.Visible = False
         End If
+
         Timer1.Enabled = True
 
     End Sub
@@ -32,7 +35,9 @@
     End Sub
 
     Private Sub btnPDV_Click(sender As Object, e As EventArgs) Handles btnPDV.Click
-        frmPdv.Show()
+        Me.Hide()
+        frmPdv.ShowDialog()
+        Me.Show()
     End Sub
 
     Private Sub btnEstoque_Click(sender As Object, e As EventArgs) Handles btnEstoque.Click
@@ -55,6 +60,6 @@
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        frmFun.Show()
+        frmFun.ShowDialog()
     End Sub
 End Class
