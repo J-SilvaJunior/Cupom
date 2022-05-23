@@ -24,6 +24,9 @@
             Case Keys.F5
                 erro(e.KeyCode)
             Case Keys.Escape
+                If funcionarioAtual._cargo = "Administrador" Then
+                    reset()
+                End If
                 erro(e.KeyCode)
             Case Keys.F3
                 erro(e.KeyCode)
@@ -39,34 +42,28 @@
         End Select
     End Sub
 
-    Sub reset(opc As Integer)
-        Select Case opc
-            Case 1
-
-            Case 2
-
-            Case 3
-
-            Case 4
-
-            Case 5
-                lstCup.Items.Clear()
-                Aberto = False
-                valorTotal = 0
-
-                descontos = 0
-                divisor()
-                lstCup.Items.Add("")
-                lstCup.Items.Add("           Mercado do Ricardão           ")
-                lstCup.Items.Add("")
-                lstCup.Items.Add($"{Now(),40}")
-                divisor()
-                lstCup.Items.Add($"{"Código",-13}{"Descrição",-18}    Preço")
-                lstCup.Items.Add($"{"Quantidade",-6} {"Preço Total",29}")
-                divisor()
-        End Select
-
-
+    Sub reset()
+        lstCup.Items.Clear()
+        valorTotal = 0
+        descontos = 0
+        lblPro.Text = "-"
+        lblQua.Text = "-"
+        lblSubTotal.Text = "-"
+        lblDesconto.Text = "-"
+        lblPreUnt.Text = "-"
+        lblTotal.Text = "-"
+        lblQnt.Text = "1"
+        If Aberto Then
+            divisor()
+            lstCup.Items.Add("")
+            lstCup.Items.Add("           Mercado do Ricardão           ")
+            lstCup.Items.Add("")
+            lstCup.Items.Add($"{Now(),40}")
+            divisor()
+            lstCup.Items.Add($"{"Código",-13}{"Descrição",-18}    Preço")
+            lstCup.Items.Add($"{"Quantidade",-6} {"Preço Total",29}")
+            divisor()
+        End If
 
     End Sub
 
@@ -76,8 +73,9 @@
 
     Public Sub adicionarProdutoCupom(dr As MySql.Data.MySqlClient.MySqlDataReader, qnt As Double)
         If Not Aberto Then
-            reset(5)
+
             Aberto = True
+            reset()
         End If
 
         '-----------------|Primeira linha adicionada|----------------------------------------------------------------------------'|
