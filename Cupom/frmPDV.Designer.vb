@@ -33,6 +33,8 @@ Partial Class frmPdv
         Me.btnPes = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.lblDesconto = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
         Me.lblSubTotal = New System.Windows.Forms.Label()
         Me.lblPreUnt = New System.Windows.Forms.Label()
         Me.lblQua = New System.Windows.Forms.Label()
@@ -53,8 +55,6 @@ Partial Class frmPdv
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.lblQnt = New System.Windows.Forms.Label()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.lblDesconto = New System.Windows.Forms.Label()
         Me.Panel2.SuspendLayout()
         Me.Panel3.SuspendLayout()
         CType(Me.pctCoupon, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -66,7 +66,6 @@ Partial Class frmPdv
         Me.lstCup.Font = New System.Drawing.Font("Courier New", 20.0!, System.Drawing.FontStyle.Bold)
         Me.lstCup.FormattingEnabled = True
         Me.lstCup.ItemHeight = 31
-        Me.lstCup.Items.AddRange(New Object() {"----------------------------------------"})
         Me.lstCup.Location = New System.Drawing.Point(12, 12)
         Me.lstCup.Name = "lstCup"
         Me.lstCup.Size = New System.Drawing.Size(678, 531)
@@ -197,6 +196,28 @@ Partial Class frmPdv
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(826, 152)
         Me.Panel2.TabIndex = 10
+        '
+        'lblDesconto
+        '
+        Me.lblDesconto.AutoSize = True
+        Me.lblDesconto.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblDesconto.ForeColor = System.Drawing.Color.FromArgb(CType(CType(214, Byte), Integer), CType(CType(105, Byte), Integer), CType(CType(73, Byte), Integer))
+        Me.lblDesconto.Location = New System.Drawing.Point(103, 88)
+        Me.lblDesconto.Name = "lblDesconto"
+        Me.lblDesconto.Size = New System.Drawing.Size(16, 19)
+        Me.lblDesconto.TabIndex = 17
+        Me.lblDesconto.Text = "-"
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.ForeColor = System.Drawing.Color.FromArgb(CType(CType(214, Byte), Integer), CType(CType(105, Byte), Integer), CType(CType(73, Byte), Integer))
+        Me.Label5.Location = New System.Drawing.Point(13, 88)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(84, 19)
+        Me.Label5.TabIndex = 16
+        Me.Label5.Text = "Desconto:"
         '
         'lblSubTotal
         '
@@ -424,28 +445,6 @@ Partial Class frmPdv
         Me.lblQnt.TabIndex = 14
         Me.lblQnt.Text = "1"
         Me.lblQnt.TextAlign = System.Drawing.ContentAlignment.TopRight
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.ForeColor = System.Drawing.Color.FromArgb(CType(CType(214, Byte), Integer), CType(CType(105, Byte), Integer), CType(CType(73, Byte), Integer))
-        Me.Label5.Location = New System.Drawing.Point(13, 88)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(84, 19)
-        Me.Label5.TabIndex = 16
-        Me.Label5.Text = "Desconto:"
-        '
-        'lblDesconto
-        '
-        Me.lblDesconto.AutoSize = True
-        Me.lblDesconto.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblDesconto.ForeColor = System.Drawing.Color.FromArgb(CType(CType(214, Byte), Integer), CType(CType(105, Byte), Integer), CType(CType(73, Byte), Integer))
-        Me.lblDesconto.Location = New System.Drawing.Point(103, 88)
-        Me.lblDesconto.Name = "lblDesconto"
-        Me.lblDesconto.Size = New System.Drawing.Size(16, 19)
-        Me.lblDesconto.TabIndex = 17
-        Me.lblDesconto.Text = "-"
         '
         'frmPdv
         '

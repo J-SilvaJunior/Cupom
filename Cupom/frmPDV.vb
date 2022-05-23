@@ -79,11 +79,33 @@
             reset(5)
             Aberto = True
         End If
-        lstCup.Items.Add($"{dr("cod_produto"),-13}{dr("descricao"),-19}{Convert.ToDouble(dr("preco_venda")).ToString("c"),-40}")
-        lstCup.Items.Add($"{qnt,-6}    {(Convert.ToDouble(dr("preco_venda")) * qnt).ToString("c"),30}")
-        lblSubTotal.Text = (subtotal + Convert.ToDouble(dr("preco_venda"))).ToString("c")
-        lstCup.SelectedIndex = lstCup.Items.Count - 2
-        lstCup.SelectedIndex = lstCup.Items.Count - 1
+
+        '-----------------|Primeira linha adicionada|----------------------------------------------------------------------------'|
+        lstCup.Items.Add($"{dr("cod_produto"),-13}{dr("descricao"),-19}{Convert.ToDouble(dr("preco_venda")).ToString("c"),-40}") '|
+        '------------------------------------------------------------------------------------------------------------------------'|
+
+        '-----------------|Segunda linha adicionada|----------------------------------------------------'|
+        lstCup.Items.Add($"{qnt,-6}    {(Convert.ToDouble(dr("preco_venda")) * qnt).ToString("c"),30}") '|
+        '-----------------------------------------------------------------------------------------------'|
+
+        '-----------------|Adicionar ao subtotal|-------------------------------------------'|
+        subtotal += Convert.ToDouble(dr("preco_venda")) * qnt                               '|
+        '-----------------------------------------------------------------------------------'|
+
+        '-----------------|Scroll down|----------------|
+        lstCup.SelectedIndex = lstCup.Items.Count - 1 '|
+        lstCup.SelectedIndex = lstCup.Items.Count - 2 '|
+        '----------------------------------------------|
+
+        '-----------------|Atualização de tela do PDV|--------------------------------'|
+        lblPro.Text = dr("descricao")                                                 '|
+        lblQua.Text = qnt.ToString()                                                  '|
+        lblSubTotal.Text = subtotal.ToString("c")                                     '|
+        lblDesconto.Text = descontos.ToString("c")                                    '|
+        lblPreUnt.Text = (Convert.ToDouble(dr("preco_venda")) * qnt).ToString("c")    '|
+        lblTotal.Text = (subtotal - descontos).ToString("c")                          '|
+        lblQnt.Text = "1"                                                             '|
+        '-----------------------------------------------------------------------------'|
     End Sub
 
     Private Sub frmPdv_Load(sender As Object, e As EventArgs) Handles MyBase.Load

@@ -13,6 +13,11 @@ Module DB
 
     Public funcionarioAtual As Funcionario
 
+    Public caixaAtual As Integer
+    Public portaImpressora As String
+    Public descontoMaximo As Double
+    Public nomeDaEmpresa As String
+
     '---------------------------------------------------------------------------------------
     '                           Funções de consumo do Banco de dados
     '---------------------------------------------------------------------------------------
