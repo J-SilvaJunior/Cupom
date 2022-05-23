@@ -91,6 +91,12 @@
     <Compile Include="FrmAviso.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmConfirmar.Designer.vb">
+      <DependentUpon>frmConfirmar.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmConfirmar.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmFun.Designer.vb">
       <DependentUpon>frmFun.vb</DependentUpon>
     </Compile>
@@ -138,6 +144,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmAviso.resx">
       <DependentUpon>FrmAviso.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmConfirmar.resx">
+      <DependentUpon>frmConfirmar.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmFun.resx">
       <DependentUpon>frmFun.vb</DependentUpon>

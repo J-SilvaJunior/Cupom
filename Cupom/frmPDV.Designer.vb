@@ -22,6 +22,7 @@ Partial Class frmPdv
     'Não o modifique usando o editor de códigos.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmPdv))
         Me.lstCup = New System.Windows.Forms.ListBox()
         Me.btnVnd = New System.Windows.Forms.Button()
@@ -55,6 +56,7 @@ Partial Class frmPdv
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.lblQnt = New System.Windows.Forms.Label()
+        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Panel2.SuspendLayout()
         Me.Panel3.SuspendLayout()
         CType(Me.pctCoupon, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -374,9 +376,9 @@ Partial Class frmPdv
         Me.lblHora.ForeColor = System.Drawing.Color.FromArgb(CType(CType(214, Byte), Integer), CType(CType(105, Byte), Integer), CType(CType(73, Byte), Integer))
         Me.lblHora.Location = New System.Drawing.Point(61, 62)
         Me.lblHora.Name = "lblHora"
-        Me.lblHora.Size = New System.Drawing.Size(50, 19)
+        Me.lblHora.Size = New System.Drawing.Size(16, 19)
         Me.lblHora.TabIndex = 17
-        Me.lblHora.Text = "Hora:"
+        Me.lblHora.Text = "-"
         '
         'lblData
         '
@@ -385,9 +387,9 @@ Partial Class frmPdv
         Me.lblData.ForeColor = System.Drawing.Color.FromArgb(CType(CType(214, Byte), Integer), CType(CType(105, Byte), Integer), CType(CType(73, Byte), Integer))
         Me.lblData.Location = New System.Drawing.Point(60, 35)
         Me.lblData.Name = "lblData"
-        Me.lblData.Size = New System.Drawing.Size(50, 19)
+        Me.lblData.Size = New System.Drawing.Size(16, 19)
         Me.lblData.TabIndex = 16
-        Me.lblData.Text = "Data:"
+        Me.lblData.Text = "-"
         '
         'lblFun
         '
@@ -396,9 +398,9 @@ Partial Class frmPdv
         Me.lblFun.ForeColor = System.Drawing.Color.FromArgb(CType(CType(214, Byte), Integer), CType(CType(105, Byte), Integer), CType(CType(73, Byte), Integer))
         Me.lblFun.Location = New System.Drawing.Point(116, 6)
         Me.lblFun.Name = "lblFun"
-        Me.lblFun.Size = New System.Drawing.Size(105, 19)
+        Me.lblFun.Size = New System.Drawing.Size(16, 19)
         Me.lblFun.TabIndex = 15
-        Me.lblFun.Text = "Funcionário:"
+        Me.lblFun.Text = "-"
         '
         'Label4
         '
@@ -445,6 +447,10 @@ Partial Class frmPdv
         Me.lblQnt.TabIndex = 14
         Me.lblQnt.Text = "1"
         Me.lblQnt.TextAlign = System.Drawing.ContentAlignment.TopRight
+        '
+        'Timer1
+        '
+        Me.Timer1.Enabled = True
         '
         'frmPdv
         '
@@ -515,4 +521,5 @@ Partial Class frmPdv
     Friend WithEvents lblQnt As Label
     Friend WithEvents lblDesconto As Label
     Friend WithEvents Label5 As Label
+    Friend WithEvents Timer1 As Timer
 End Class

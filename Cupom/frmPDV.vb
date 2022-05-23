@@ -25,7 +25,10 @@
                 erro(e.KeyCode)
             Case Keys.Escape
                 If funcionarioAtual._cargo = "Administrador" Then
+                    Aberto = False
                     reset()
+                Else
+
                 End If
                 erro(e.KeyCode)
             Case Keys.F3
@@ -46,6 +49,7 @@
         lstCup.Items.Clear()
         valorTotal = 0
         descontos = 0
+        subtotal = 0
         lblPro.Text = "-"
         lblQua.Text = "-"
         lblSubTotal.Text = "-"
@@ -53,6 +57,8 @@
         lblPreUnt.Text = "-"
         lblTotal.Text = "-"
         lblQnt.Text = "1"
+
+
         If Aberto Then
             divisor()
             lstCup.Items.Add("")
@@ -115,6 +121,10 @@
             erro("Não é possível fechar o PDV no momento: Uma venda está aberta")
             e.Cancel = True
         End If
+    End Sub
+
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        lblHora.Text = Now.Hour
     End Sub
 End Class
 
