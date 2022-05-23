@@ -15,13 +15,17 @@
             btnRelatorio.Visible = False
             btnEstoque.Visible = False
             Button1.Visible = False
-        End If
-        If funcionarioAtual._cargo = "Estoquista" Then
+
+        ElseIf funcionarioAtual._cargo = "Estoquista" Then
             btnPDV.Visible = False
             btnRelatorio.Visible = False
             Button1.Visible = False
+        Else
+            btnPDV.Visible = True
+            btnRelatorio.Visible = True
+            Button1.Visible = True
+            btnEstoque.Visible = True
         End If
-
         Timer1.Enabled = True
 
     End Sub

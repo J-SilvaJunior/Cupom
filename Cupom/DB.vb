@@ -13,7 +13,6 @@ Module DB
 
     Public funcionarioAtual As Funcionario
 
-    Public produtoAtual As Produto
     '---------------------------------------------------------------------------------------
     '                           Funções de consumo do Banco de dados
     '---------------------------------------------------------------------------------------
@@ -47,30 +46,6 @@ Module DB
         End If
 
 
-        Return False
-    End Function
-
-    Function retornarProduto(cod As String, qnt As Double) As Boolean
-        cmd.CommandText = String.Format("select * from produto_ref where cod_produto = '{0}'", cod)
-        Dim dr As MySqlClient.MySqlDataReader
-        Try
-            abrirBanco()
-            dr = cmd.ExecuteReader()
-            If dr.HasRows() Then
-                dr.Read()
-                produtoAtual = New Produto(dr, qnt)
-                zerarComando()
-                fecharBanco()
-                Return True
-            End If
-
-
-        Catch ex As Exception
-            erroDB(ex)
-            fecharBanco()
-            Return False
-        End Try
-        fecharBanco()
         Return False
     End Function
 
@@ -124,6 +99,88 @@ Module DB
     Sub erroDB(ex As Exception)
         erro("Ocorreu um erro ao acessar a base de dados: " + ex.Message)
     End Sub
+
+
+    '-----------------------------------------------------------------------
+    '                           Sub e Funções do PDV
+    '-----------------------------------------------------------------------
+
+    Sub buscarProdutoPDV(cod As String, qnt As Double)
+        cmd.CommandText = $"SELECT * FROM produto_ref WHERE cod_produto = '{preencherVazio(cod)}'"
+        Try
+            abrirBanco()
+            Dim dr As MySqlClient.MySqlDataReader = cmd.ExecuteReader
+            If dr.HasRows() Then
+                dr.Read()
+                frmPdv.adicionarProdutoCupom(dr, qnt)
+                cmd.CommandText = "INSERT INTO prod_venda"
+            Else
+                erro("Produto não encontrado.")
+            End If
+
+        Catch ex As Exception
+            erro(ex.Message)
+        Finally
+            zerarComando()
+            fecharBanco()
+        End Try
+
+
+    End Sub
+
+    Sub removerDoCarrinho(index As Integer)
+
+    End Sub
+    '---------------------------------------------------------------------
+    '                   Pesquisar produtos no PDV
+    '---------------------------------------------------------------------
+
+
+    '---------------------------------------------------------------------
+    '-----------preencher espaço vazio de codigo de produto------------
+    '---------------------------------------------------------------------
+    Function preencherVazio(cod As String) As String
+        Dim aux As String = New String("0", 13 - cod.Length)
+        Return (aux + cod)
+    End Function
+
+    Sub buscarProdutoPesquisa(cod As String)
+        Dim aux As UInt64
+        If UInt64.TryParse(cod, aux) Then
+            Try
+                cmd.CommandText = $"select cod_produto, descricao, preco_venda from produto_ref where cod_produto = '{preencherVazio(cod)}'"
+                abrirBanco()
+
+                Dim dr As MySqlClient.MySqlDataReader = cmd.ExecuteReader()
+
+                If dr.HasRows() Then
+                    frmPesquisa.feedBack(dr)
+                End If
+
+            Catch ex As Exception
+                erro(ex.Message)
+            Finally
+                zerarComando()
+                fecharBanco()
+            End Try
+        Else
+            Try
+                cmd.CommandText = $"select cod_produto, descricao, preco_venda from produto_ref where descricao like '%{cod}%'"
+                abrirBanco()
+                Dim dr As MySqlClient.MySqlDataReader = cmd.ExecuteReader()
+                If dr.HasRows() Then
+                    frmPesquisa.feedBack(dr)
+                End If
+            Catch ex As Exception
+                erro(ex.Message)
+            Finally
+                zerarComando()
+                fecharBanco()
+            End Try
+        End If
+
+    End Sub
+
 End Module
 
 

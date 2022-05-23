@@ -53,6 +53,8 @@ Partial Class frmPdv
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.lblQnt = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.lblDesconto = New System.Windows.Forms.Label()
         Me.Panel2.SuspendLayout()
         Me.Panel3.SuspendLayout()
         CType(Me.pctCoupon, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -64,10 +66,10 @@ Partial Class frmPdv
         Me.lstCup.Font = New System.Drawing.Font("Courier New", 20.0!, System.Drawing.FontStyle.Bold)
         Me.lstCup.FormattingEnabled = True
         Me.lstCup.ItemHeight = 31
-        Me.lstCup.Items.AddRange(New Object() {"1234567890123456789012345678901234567890"})
+        Me.lstCup.Items.AddRange(New Object() {"----------------------------------------"})
         Me.lstCup.Location = New System.Drawing.Point(12, 12)
         Me.lstCup.Name = "lstCup"
-        Me.lstCup.Size = New System.Drawing.Size(656, 531)
+        Me.lstCup.Size = New System.Drawing.Size(678, 531)
         Me.lstCup.TabIndex = 0
         Me.lstCup.TabStop = False
         '
@@ -77,9 +79,9 @@ Partial Class frmPdv
         Me.btnVnd.BackColor = System.Drawing.Color.White
         Me.btnVnd.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnVnd.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnVnd.Location = New System.Drawing.Point(682, 187)
+        Me.btnVnd.Location = New System.Drawing.Point(696, 187)
         Me.btnVnd.Name = "btnVnd"
-        Me.btnVnd.Size = New System.Drawing.Size(160, 78)
+        Me.btnVnd.Size = New System.Drawing.Size(146, 78)
         Me.btnVnd.TabIndex = 1
         Me.btnVnd.TabStop = False
         Me.btnVnd.Text = "Efetuar Venda" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "(Barra de Espaço)"
@@ -119,9 +121,9 @@ Partial Class frmPdv
         Me.btnDsc.BackColor = System.Drawing.Color.White
         Me.btnDsc.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnDsc.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnDsc.Location = New System.Drawing.Point(682, 271)
+        Me.btnDsc.Location = New System.Drawing.Point(696, 271)
         Me.btnDsc.Name = "btnDsc"
-        Me.btnDsc.Size = New System.Drawing.Size(160, 76)
+        Me.btnDsc.Size = New System.Drawing.Size(146, 76)
         Me.btnDsc.TabIndex = 3
         Me.btnDsc.TabStop = False
         Me.btnDsc.Text = "Desconto " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "(F3)"
@@ -145,11 +147,11 @@ Partial Class frmPdv
         '
         Me.txtCod.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtCod.Font = New System.Drawing.Font("Microsoft Sans Serif", 21.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtCod.Location = New System.Drawing.Point(674, 503)
+        Me.txtCod.Location = New System.Drawing.Point(696, 503)
         Me.txtCod.MaxLength = 13
         Me.txtCod.Name = "txtCod"
         Me.txtCod.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.txtCod.Size = New System.Drawing.Size(220, 40)
+        Me.txtCod.Size = New System.Drawing.Size(316, 40)
         Me.txtCod.TabIndex = 0
         Me.txtCod.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
@@ -157,9 +159,9 @@ Partial Class frmPdv
         '
         Me.btnPes.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnPes.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnPes.Location = New System.Drawing.Point(904, 503)
+        Me.btnPes.Location = New System.Drawing.Point(848, 353)
         Me.btnPes.Name = "btnPes"
-        Me.btnPes.Size = New System.Drawing.Size(112, 40)
+        Me.btnPes.Size = New System.Drawing.Size(168, 53)
         Me.btnPes.TabIndex = 7
         Me.btnPes.TabStop = False
         Me.btnPes.Text = "Pesquisar" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "(F8)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
@@ -170,7 +172,7 @@ Partial Class frmPdv
         Me.Label1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Century", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(674, 480)
+        Me.Label1.Location = New System.Drawing.Point(696, 480)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(106, 20)
         Me.Label1.TabIndex = 8
@@ -181,6 +183,8 @@ Partial Class frmPdv
         Me.Panel2.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel2.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.Panel2.Controls.Add(Me.lblDesconto)
+        Me.Panel2.Controls.Add(Me.Label5)
         Me.Panel2.Controls.Add(Me.lblSubTotal)
         Me.Panel2.Controls.Add(Me.lblPreUnt)
         Me.Panel2.Controls.Add(Me.lblQua)
@@ -199,33 +203,33 @@ Partial Class frmPdv
         Me.lblSubTotal.AutoSize = True
         Me.lblSubTotal.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblSubTotal.ForeColor = System.Drawing.Color.FromArgb(CType(CType(214, Byte), Integer), CType(CType(105, Byte), Integer), CType(CType(73, Byte), Integer))
-        Me.lblSubTotal.Location = New System.Drawing.Point(94, 114)
+        Me.lblSubTotal.Location = New System.Drawing.Point(91, 114)
         Me.lblSubTotal.Name = "lblSubTotal"
-        Me.lblSubTotal.Size = New System.Drawing.Size(75, 19)
+        Me.lblSubTotal.Size = New System.Drawing.Size(16, 19)
         Me.lblSubTotal.TabIndex = 15
-        Me.lblSubTotal.Text = "Subtotal:"
+        Me.lblSubTotal.Text = "-"
         '
         'lblPreUnt
         '
         Me.lblPreUnt.AutoSize = True
         Me.lblPreUnt.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblPreUnt.ForeColor = System.Drawing.Color.FromArgb(CType(CType(214, Byte), Integer), CType(CType(105, Byte), Integer), CType(CType(73, Byte), Integer))
-        Me.lblPreUnt.Location = New System.Drawing.Point(104, 79)
+        Me.lblPreUnt.Location = New System.Drawing.Point(103, 62)
         Me.lblPreUnt.Name = "lblPreUnt"
-        Me.lblPreUnt.Size = New System.Drawing.Size(85, 19)
+        Me.lblPreUnt.Size = New System.Drawing.Size(16, 19)
         Me.lblPreUnt.TabIndex = 14
-        Me.lblPreUnt.Text = "Preço Unt:"
+        Me.lblPreUnt.Text = "-"
         '
         'lblQua
         '
         Me.lblQua.AutoSize = True
         Me.lblQua.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblQua.ForeColor = System.Drawing.Color.FromArgb(CType(CType(214, Byte), Integer), CType(CType(105, Byte), Integer), CType(CType(73, Byte), Integer))
-        Me.lblQua.Location = New System.Drawing.Point(127, 47)
+        Me.lblQua.Location = New System.Drawing.Point(127, 36)
         Me.lblQua.Name = "lblQua"
-        Me.lblQua.Size = New System.Drawing.Size(108, 19)
+        Me.lblQua.Size = New System.Drawing.Size(16, 19)
         Me.lblQua.TabIndex = 13
-        Me.lblQua.Text = "Quantidade:"
+        Me.lblQua.Text = "-"
         '
         'lblPro
         '
@@ -234,9 +238,9 @@ Partial Class frmPdv
         Me.lblPro.ForeColor = System.Drawing.Color.FromArgb(CType(CType(214, Byte), Integer), CType(CType(105, Byte), Integer), CType(CType(73, Byte), Integer))
         Me.lblPro.Location = New System.Drawing.Point(91, 10)
         Me.lblPro.Name = "lblPro"
-        Me.lblPro.Size = New System.Drawing.Size(72, 19)
+        Me.lblPro.Size = New System.Drawing.Size(16, 19)
         Me.lblPro.TabIndex = 12
-        Me.lblPro.Text = "Produto:"
+        Me.lblPro.Text = "-"
         '
         'Label14
         '
@@ -254,7 +258,7 @@ Partial Class frmPdv
         Me.Label13.AutoSize = True
         Me.Label13.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label13.ForeColor = System.Drawing.Color.FromArgb(CType(CType(214, Byte), Integer), CType(CType(105, Byte), Integer), CType(CType(73, Byte), Integer))
-        Me.Label13.Location = New System.Drawing.Point(13, 79)
+        Me.Label13.Location = New System.Drawing.Point(12, 62)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(85, 19)
         Me.Label13.TabIndex = 10
@@ -265,7 +269,7 @@ Partial Class frmPdv
         Me.Label12.AutoSize = True
         Me.Label12.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label12.ForeColor = System.Drawing.Color.FromArgb(CType(CType(214, Byte), Integer), CType(CType(105, Byte), Integer), CType(CType(73, Byte), Integer))
-        Me.Label12.Location = New System.Drawing.Point(13, 47)
+        Me.Label12.Location = New System.Drawing.Point(13, 36)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(108, 19)
         Me.Label12.TabIndex = 9
@@ -301,9 +305,9 @@ Partial Class frmPdv
         Me.lblTotal.ForeColor = System.Drawing.Color.FromArgb(CType(CType(214, Byte), Integer), CType(CType(105, Byte), Integer), CType(CType(73, Byte), Integer))
         Me.lblTotal.Location = New System.Drawing.Point(68, 12)
         Me.lblTotal.Name = "lblTotal"
-        Me.lblTotal.Size = New System.Drawing.Size(45, 19)
+        Me.lblTotal.Size = New System.Drawing.Size(16, 19)
         Me.lblTotal.TabIndex = 13
-        Me.lblTotal.Text = "Total"
+        Me.lblTotal.Text = "-"
         '
         'Label15
         '
@@ -337,9 +341,9 @@ Partial Class frmPdv
         Me.Panel1.Controls.Add(Me.Label4)
         Me.Panel1.Controls.Add(Me.Label3)
         Me.Panel1.Controls.Add(Me.Label2)
-        Me.Panel1.Location = New System.Drawing.Point(678, 12)
+        Me.Panel1.Location = New System.Drawing.Point(696, 12)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(334, 87)
+        Me.Panel1.Size = New System.Drawing.Size(316, 87)
         Me.Panel1.TabIndex = 13
         '
         'lblHora
@@ -413,13 +417,35 @@ Partial Class frmPdv
         Me.lblQnt.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblQnt.AutoSize = True
         Me.lblQnt.Font = New System.Drawing.Font("Century", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblQnt.Location = New System.Drawing.Point(875, 480)
+        Me.lblQnt.Location = New System.Drawing.Point(844, 480)
         Me.lblQnt.Name = "lblQnt"
         Me.lblQnt.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.lblQnt.Size = New System.Drawing.Size(19, 20)
         Me.lblQnt.TabIndex = 14
         Me.lblQnt.Text = "1"
         Me.lblQnt.TextAlign = System.Drawing.ContentAlignment.TopRight
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.ForeColor = System.Drawing.Color.FromArgb(CType(CType(214, Byte), Integer), CType(CType(105, Byte), Integer), CType(CType(73, Byte), Integer))
+        Me.Label5.Location = New System.Drawing.Point(13, 88)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(84, 19)
+        Me.Label5.TabIndex = 16
+        Me.Label5.Text = "Desconto:"
+        '
+        'lblDesconto
+        '
+        Me.lblDesconto.AutoSize = True
+        Me.lblDesconto.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblDesconto.ForeColor = System.Drawing.Color.FromArgb(CType(CType(214, Byte), Integer), CType(CType(105, Byte), Integer), CType(CType(73, Byte), Integer))
+        Me.lblDesconto.Location = New System.Drawing.Point(103, 88)
+        Me.lblDesconto.Name = "lblDesconto"
+        Me.lblDesconto.Size = New System.Drawing.Size(16, 19)
+        Me.lblDesconto.TabIndex = 17
+        Me.lblDesconto.Text = "-"
         '
         'frmPdv
         '
@@ -488,4 +514,6 @@ Partial Class frmPdv
     Friend WithEvents lblPro As Label
     Friend WithEvents lblTotal As Label
     Friend WithEvents lblQnt As Label
+    Friend WithEvents lblDesconto As Label
+    Friend WithEvents Label5 As Label
 End Class

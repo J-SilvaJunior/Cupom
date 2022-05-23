@@ -17,7 +17,7 @@
             frmArea.Show()
 
         Else
-            MsgBox("Foi encontrado um problema: Usuário já logado ou não encontrado.")
+            erro("Usuário não encontrado.")
         End If
     End Sub
 

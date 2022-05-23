@@ -35,9 +35,12 @@ Partial Class frmLogin
         '
         Me.txtCod.Location = New System.Drawing.Point(13, 183)
         Me.txtCod.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.txtCod.MaxLength = 6
         Me.txtCod.Name = "txtCod"
         Me.txtCod.Size = New System.Drawing.Size(258, 27)
         Me.txtCod.TabIndex = 0
+        Me.txtCod.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.txtCod.UseSystemPasswordChar = True
         '
         'Label1
         '

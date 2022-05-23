@@ -109,6 +109,13 @@
     <Compile Include="frmArea.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmPesquisa.Designer.vb">
+      <DependentUpon>frmPesquisa.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmPesquisa.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuleB.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -141,6 +148,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmArea.resx">
       <DependentUpon>frmArea.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPesquisa.resx">
+      <DependentUpon>frmPesquisa.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
