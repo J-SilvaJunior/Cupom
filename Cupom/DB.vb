@@ -54,6 +54,26 @@ Module DB
         Return False
     End Function
 
+    Function adminTrust(cod As String) As Boolean
+        cmd.CommandText = String.Format("select * from funcionario where codigo_funcionario = '{0}'", cod)
+        Dim trusted As Boolean = False
+        Try
+            abrirBanco()
+            Dim dr As MySqlClient.MySqlDataReader = cmd.ExecuteReader
+            If dr.HasRows Then
+                dr.Read()
+                If dr("cargo") = "Administrador" Then
+                    trusted = True
+                End If
+            End If
+        Catch ex As Exception
+            erro(ex.Message)
+        Finally
+            fecharBanco()
+        End Try
+        Return trusted
+    End Function
+
     Function checarDuplicidade(cod As String) As Boolean
         cmd.CommandText = $"select * from funcionario where codigo_funcionario = '{cod}'"
         Dim dr As MySqlClient.MySqlDataReader

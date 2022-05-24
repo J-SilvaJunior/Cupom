@@ -11,12 +11,12 @@
     End Sub
 
     Private Sub frmArea_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        If funcionarioAtual._cargo = "Vendedor" Then
+        If funcionarioAtual.cargo = "Vendedor" Then
             btnRelatorio.Visible = False
             btnEstoque.Visible = False
             Button1.Visible = False
 
-        ElseIf funcionarioAtual._cargo = "Estoquista" Then
+        ElseIf funcionarioAtual.cargo = "Estoquista" Then
             btnPDV.Visible = False
             btnRelatorio.Visible = False
             Button1.Visible = False

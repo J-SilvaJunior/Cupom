@@ -9,7 +9,7 @@
     End Sub
 
 
-
+    Public trust As Boolean = False
     Dim Aberto As Boolean = False
     Dim valorTotal As Double = 0
     Dim subtotal As Double = 0
@@ -24,13 +24,20 @@
             Case Keys.F5
                 erro(e.KeyCode)
             Case Keys.Escape
-                If funcionarioAtual._cargo = "Administrador" Then
+
+                If funcionarioAtual.cargo = "Administrador" Then
+
                     Aberto = False
                     reset()
                 Else
-
+                    frmConfirmar.ShowDialog()
+                    If trust = True Then
+                        trust = False
+                        Aberto = False
+                        reset()
+                        erro("Código de administrador inserido")
+                    End If
                 End If
-                erro(e.KeyCode)
             Case Keys.F3
                 erro(e.KeyCode)
             Case Keys.Space
@@ -113,7 +120,7 @@
     End Sub
 
     Private Sub frmPdv_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
+        lblFun.Text = funcionarioAtual.nome
     End Sub
 
     Private Sub frmPdv_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
@@ -124,7 +131,8 @@
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
-        lblHora.Text = Now.Hour
+        lblHora.Text = Now.ToString("HH:mm:ss")
+        lblData.Text = Now.ToString("dd/MM")
     End Sub
 End Class
 
