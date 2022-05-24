@@ -97,6 +97,12 @@
     <Compile Include="frmConfirmar.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmDesconto.Designer.vb">
+      <DependentUpon>frmDesconto.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmDesconto.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmFun.Designer.vb">
       <DependentUpon>frmFun.vb</DependentUpon>
     </Compile>
@@ -147,6 +153,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmConfirmar.resx">
       <DependentUpon>frmConfirmar.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDesconto.resx">
+      <DependentUpon>frmDesconto.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmFun.resx">
       <DependentUpon>frmFun.vb</DependentUpon>

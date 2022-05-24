@@ -2,7 +2,7 @@
     '---------------------------------------------------------------------
     '                       Subrotinas customizadas
     '---------------------------------------------------------------------
-    Public Sub erro(ex As String)
+    Public Sub avisar(ex As String)
         Dim aviso As FrmAviso = New FrmAviso(ex)
         aviso.ShowDialog()
         aviso.Dispose()

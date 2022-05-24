@@ -17,7 +17,7 @@ Public Class frmLogin
             frmArea.Show()
 
         Else
-            erro("Usuário não encontrado.")
+            avisar("Usuário não encontrado.")
         End If
     End Sub
 

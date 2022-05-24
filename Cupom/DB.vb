@@ -67,7 +67,7 @@ Module DB
                 End If
             End If
         Catch ex As Exception
-            erro(ex.Message)
+            avisar(ex.Message)
         Finally
             fecharBanco()
         End Try
@@ -122,7 +122,7 @@ Module DB
     End Sub 'ok
 
     Sub erroDB(ex As Exception)
-        erro("Ocorreu um erro ao acessar a base de dados: " + ex.Message)
+        avisar("Ocorreu um erro ao acessar a base de dados: " + ex.Message)
     End Sub 'ok
 
 
@@ -139,40 +139,40 @@ Module DB
                 dr.Read()
 
                 cmd.CommandText = $"INSERT INTO venda_atual (indice, cod_prod, qnt, preco_prod, preco_total) values ({indice}, '{dr("cod_produto")}', '{(qnt).ToString.Replace(",", ".")}',{dr("preco_venda")},{(Convert.ToDouble(dr("preco_venda")) * qnt).ToString.Replace(",", ".")})"
-                MessageBox.Show(cmd.CommandText)
+                'MessageBox.Show(cmd.CommandText)
                 frmPdv.adicionarProdutoCupom(dr, qnt)
                 dr.Close()
                 cmd.ExecuteNonQuery()
             Else
-                erro("Produto não encontrado.")
+                avisar("Produto não encontrado.")
             End If
 
         Catch ex As Exception
-            erro(ex.Message)
+            avisar(ex.Message)
         Finally
             zerarComando()
             fecharBanco()
         End Try
 
 
-    End Sub
+    End Sub 'ok
 
     Sub removerDoCarrinho(index As Integer)
 
     End Sub
 
     Sub limparRegistroVenda()
-        cmd.CommandText = "delete from vendaAtual"
+        cmd.CommandText = "delete from venda_atual"
         Try
             abrirBanco()
             cmd.ExecuteNonQuery()
         Catch ex As Exception
-            erro(ex.Message)
+            avisar(ex.Message)
         Finally
             fecharBanco()
             zerarComando()
         End Try
-    End Sub
+    End Sub 'ok
     '---------------------------------------------------------------------
     '-----------preencher espaço vazio de codigo de produto------------
     '---------------------------------------------------------------------
@@ -195,7 +195,7 @@ Module DB
                 End If
 
             Catch ex As Exception
-                erro(ex.Message)
+                avisar(ex.Message)
             Finally
                 zerarComando()
                 fecharBanco()
@@ -209,7 +209,7 @@ Module DB
                     frmPesquisa.feedBack(dr)
                 End If
             Catch ex As Exception
-                erro(ex.Message)
+                avisar(ex.Message)
             Finally
                 zerarComando()
                 fecharBanco()

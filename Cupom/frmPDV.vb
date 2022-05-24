@@ -13,38 +13,57 @@
     Dim Aberto As Boolean = False
     Dim valorTotal As Double = 0
     Dim subtotal As Double = 0
-    Dim descontos As Integer = 0
+    Public descontos As Integer = 0
     Dim indiceAtual As Integer = 11
     Private Sub txtCod_Keydown(sender As Object, e As KeyEventArgs) Handles txtCod.KeyDown
         Select Case e.KeyCode
-            Case Keys.Enter
-                buscarProdutoPDV(txtCod.Text, Convert.ToDouble(lblQnt.Text), indiceAtual)
-                indiceAtual += 2
-                txtCod.Clear()
-            Case Keys.F8
-                pesquisarProduto()
-            Case Keys.F5
-                erro(e.KeyCode)
-            Case Keys.Escape
-
-                If funcionarioAtual.cargo = "Administrador" Then
-
-                    Aberto = False
-                    reset()
-                Else
-                    frmConfirmar.ShowDialog()
-                    If trust = True Then
-                        trust = False
-                        Aberto = False
-                        reset()
-                        erro("Código de administrador inserido")
-                    End If
-                End If
-            Case Keys.F3
-                erro(e.KeyCode)
+            '-----------------------------------------------------------------------------'
+            Case Keys.Enter                                                               '
+                buscarProdutoPDV(txtCod.Text, Convert.ToDouble(lblQnt.Text), indiceAtual) '
+                txtCod.Clear()                                                            '
+            '-----------------------------------------------------------------------------'
+            '-----------------------'
+            Case Keys.F8            '
+                pesquisarProduto()  '
+            '-----------------------'
+            '-----------------------'
+            Case Keys.F5            '
+                avisar(e.KeyCode)   '
+            '-----------------------'
+            '-------------------------------------------------------
+            Case Keys.Escape                                        '
+                If funcionarioAtual.cargo = "Administrador" Then    '
+                    Aberto = False                                  '
+                    reset()                                         '
+                    limparRegistroVenda()                           '
+                Else                                                '
+                    frmConfirmar.ShowDialog()                       '
+                    If trust = True Then                            '
+                        trust = False                               '
+                        Aberto = False                              '
+                        reset()                                     '
+                        limparRegistroVenda()                       '
+                        avisar("Código de administrador inserido")  '
+                    End If                                          '
+                End If                                              '
+                '---------------------------------------------------'
+            '-------------------------------------------------------'
+            Case Keys.F3                                            '
+                If funcionarioAtual.cargo = "Administrador" Then    '
+                    frmDesconto.ShowDialog()                        '
+                Else                                                '
+                    frmConfirmar.ShowDialog()                       '
+                    If trust Then                                   '
+                        trust = False                               '
+                        frmDesconto.ShowDialog()                    '
+                    Else                                            '
+                        avisar("Código Incorreto.")                 '
+                    End If                                          '
+                End If                                              '
+                '---------------------------------------------------'
             Case Keys.Space
-                e.SuppressKeyPress = True
-                erro(e.KeyCode)
+
+                avisar(e.KeyCode)
             Case Keys.F2
                 Dim qnt As Double
                 If Double.TryParse(txtCod.Text, qnt) Then
@@ -119,6 +138,7 @@
         lblPreUnt.Text = (Convert.ToDouble(dr("preco_venda")) * qnt).ToString("c")    '|
         lblTotal.Text = (subtotal - descontos).ToString("c")                          '|
         lblQnt.Text = "1"                                                             '|
+        indiceAtual += 2
         '-----------------------------------------------------------------------------'|
     End Sub
 
@@ -128,7 +148,7 @@
 
     Private Sub frmPdv_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
         If Aberto Then
-            erro("Não é possível fechar o PDV no momento: Uma venda está aberta")
+            avisar("Não é possível fechar o PDV no momento: Uma venda está aberta")
             e.Cancel = True
         End If
     End Sub
@@ -136,6 +156,13 @@
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         lblHora.Text = Now.ToString("HH:mm:ss")
         lblData.Text = Now.ToString("dd/MM")
+    End Sub
+
+    Private Sub txtCod_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtCod.KeyPress
+        Select Case e.KeyChar
+            Case " "
+                e.KeyChar = ""
+        End Select
     End Sub
 End Class
 
