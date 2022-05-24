@@ -14,10 +14,12 @@
     Dim valorTotal As Double = 0
     Dim subtotal As Double = 0
     Dim descontos As Integer = 0
+    Dim indiceAtual As Integer = 11
     Private Sub txtCod_Keydown(sender As Object, e As KeyEventArgs) Handles txtCod.KeyDown
         Select Case e.KeyCode
             Case Keys.Enter
-                buscarProdutoPDV(txtCod.Text, Convert.ToDouble(lblQnt.Text))
+                buscarProdutoPDV(txtCod.Text, Convert.ToDouble(lblQnt.Text), indiceAtual)
+                indiceAtual += 2
                 txtCod.Clear()
             Case Keys.F8
                 pesquisarProduto()
@@ -76,6 +78,7 @@
             lstCup.Items.Add($"{"Código",-13}{"Descrição",-18}    Preço")
             lstCup.Items.Add($"{"Quantidade",-6} {"Preço Total",29}")
             divisor()
+            indiceAtual = 11
         End If
 
     End Sub

@@ -52,7 +52,7 @@ Module DB
 
 
         Return False
-    End Function
+    End Function 'ok
 
     Function adminTrust(cod As String) As Boolean
         cmd.CommandText = String.Format("select * from funcionario where codigo_funcionario = '{0}'", cod)
@@ -72,7 +72,7 @@ Module DB
             fecharBanco()
         End Try
         Return trusted
-    End Function
+    End Function 'ok
 
     Function checarDuplicidade(cod As String) As Boolean
         cmd.CommandText = $"select * from funcionario where codigo_funcionario = '{cod}'"
@@ -94,7 +94,7 @@ Module DB
         End Try
         fecharBanco()
         Return False
-    End Function
+    End Function 'ok
 
     Sub cadastrarUsuario(cod As String, name As String, cargo As String)
         cmd.CommandText = $"insert into funcionario (codigo_funcionario, nome, cargo) values ('{cod}','{name}','{cargo}')"
@@ -107,38 +107,42 @@ Module DB
             erroDB(ex)
             fecharBanco()
         End Try
-    End Sub
+    End Sub 'ok
 
     Sub zerarComando()
         cmd.CommandText = ""
-    End Sub
+    End Sub 'ok
 
     Sub abrirBanco()
         conn.Open()
-    End Sub
+    End Sub 'ok
 
     Sub fecharBanco()
         conn.Close()
-    End Sub
+    End Sub 'ok
 
     Sub erroDB(ex As Exception)
         erro("Ocorreu um erro ao acessar a base de dados: " + ex.Message)
-    End Sub
+    End Sub 'ok
 
 
     '-----------------------------------------------------------------------
     '                           Sub e Funções do PDV
     '-----------------------------------------------------------------------
 
-    Sub buscarProdutoPDV(cod As String, qnt As Double)
+    Sub buscarProdutoPDV(cod As String, qnt As Double, indice As Integer)
         cmd.CommandText = $"SELECT * FROM produto_ref WHERE cod_produto = '{preencherVazio(cod)}'"
         Try
             abrirBanco()
             Dim dr As MySqlClient.MySqlDataReader = cmd.ExecuteReader
             If dr.HasRows() Then
                 dr.Read()
+
+                cmd.CommandText = $"INSERT INTO venda_atual (indice, cod_prod, qnt, preco_prod, preco_total) values ({indice}, '{dr("cod_produto")}', '{(qnt).ToString.Replace(",", ".")}',{dr("preco_venda")},{(Convert.ToDouble(dr("preco_venda")) * qnt).ToString.Replace(",", ".")})"
+                MessageBox.Show(cmd.CommandText)
                 frmPdv.adicionarProdutoCupom(dr, qnt)
-                cmd.CommandText = "INSERT INTO prod_venda"
+                dr.Close()
+                cmd.ExecuteNonQuery()
             Else
                 erro("Produto não encontrado.")
             End If
@@ -156,11 +160,19 @@ Module DB
     Sub removerDoCarrinho(index As Integer)
 
     End Sub
-    '---------------------------------------------------------------------
-    '                   Pesquisar produtos no PDV
-    '---------------------------------------------------------------------
 
-
+    Sub limparRegistroVenda()
+        cmd.CommandText = "delete from vendaAtual"
+        Try
+            abrirBanco()
+            cmd.ExecuteNonQuery()
+        Catch ex As Exception
+            erro(ex.Message)
+        Finally
+            fecharBanco()
+            zerarComando()
+        End Try
+    End Sub
     '---------------------------------------------------------------------
     '-----------preencher espaço vazio de codigo de produto------------
     '---------------------------------------------------------------------
