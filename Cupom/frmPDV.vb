@@ -1,4 +1,5 @@
-﻿Public Class frmPdv
+﻿Imports System.IO
+Public Class frmPdv
     Sub New()
 
         ' Esta chamada é requerida pelo designer.
@@ -15,7 +16,9 @@
     Dim subtotal As Double = 0
     Public descontos As Integer = 0
     Dim indiceAtual As Integer = 9
+    Public qnt_items As Integer = 0
     Public valorProdutoRemovidoTotal As Double
+    Public finalizado As Boolean = False
     Private Sub txtCod_Keydown(sender As Object, e As KeyEventArgs) Handles txtCod.KeyDown
         Select Case e.KeyCode
             '-----------------------------------------------------------------------------'|
@@ -107,7 +110,6 @@
             lstCup.Items.Add($"{"Quantidade",-6} {"Preço Total",29}")
             divisor()
             indiceAtual = 9
-
         End If
 
 
@@ -150,6 +152,7 @@
         lblTotal.Text = (subtotal - descontos).ToString("c")                          '|
         lblQnt.Text = "1"                                                             '|
         indiceAtual += 2
+        qnt_items += 1
         '-----------------------------------------------------------------------------'|
     End Sub
 
@@ -186,6 +189,7 @@
                     subtotal -= valorProdutoRemovidoTotal
                     valorProdutoRemovidoTotal = 0
                     indiceAtual += 3
+                    qnt_items -= 1
                 End If
             End If
             If e.KeyCode = Keys.Escape Then
@@ -197,7 +201,21 @@
         End If
     End Sub
     Sub finalizarVenda()
-
+        Dim frm As New frmFinalizar(subtotal, descontos)
+        frm.ShowDialog()
+        frm.Dispose()
+        If finalizado Then
+            finalizado = False
+            Aberto = False
+            Dim wtr As StreamWriter = New StreamWriter($"cupons\{Now.ToString("yy-MM-dd hh-mm-ss")}.txt", False)
+            For i = 0 To lstCup.Items.Count - 1
+                wtr.WriteLine(lstCup.Items(i))
+            Next
+            wtr.Close()
+            reset()
+            limparRegistroVenda()
+            qnt_items = 0
+        End If
     End Sub
 End Class
 

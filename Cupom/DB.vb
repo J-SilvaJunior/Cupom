@@ -118,6 +118,7 @@ Module DB
     End Sub 'ok
 
     Sub abrirBanco()
+        conn.Close()
         conn.Open()
     End Sub 'ok
 
@@ -136,11 +137,21 @@ Module DB
     '-----------------------------------------------------------------------
     '                           Sub e Funções do PDV
     '-----------------------------------------------------------------------
-    Sub armazenarVenda()
+    Sub armazenarVenda(VCompra As Double,
+                       VDesconto As Double,
+                       VTotal As Double,
+                       VTroco As Double,
+                       FPagamento As Integer)
         Try
+            cmd.CommandText = "insert into venda (cod_venda,qnt_itens, valor_total, pagamento, funcionario, data_hora) " &
+                             $"values ('{pegarIdVenda()}','{frmPdv.qnt_items}','{VTotal.ToString.Replace(",", ".")}','{FPagamento}','{funcionarioAtual.nome}', now())"
             abrirBanco()
+            cmd.ExecuteNonQuery()
         Catch ex As Exception
             avisar(ex.Message)
+        Finally
+            fecharBanco()
+            zerarComando()
         End Try
     End Sub
     Sub buscarProdutoPDV(cod As String, qnt As Double, indice As Integer)
@@ -197,6 +208,25 @@ Module DB
         End Try
         Return encontrado
     End Function 'ok
+
+    Function pegarIdVenda() As Integer
+        Dim aux As Integer = 0
+        Try
+
+            cmd.CommandText = "select max(cod_venda) from venda"
+            abrirBanco()
+            Dim dr As MySqlClient.MySqlDataReader = cmd.ExecuteReader()
+            If dr.HasRows() Then
+                dr.Read()
+                aux = dr("max(cod_venda)")
+                aux += 1
+            End If
+        Catch ex As Exception
+            avisar(ex.Message)
+        End Try
+        Return aux
+
+    End Function
 
     Sub limparRegistroVenda()
         cmd.CommandText = "delete from venda_atual"
