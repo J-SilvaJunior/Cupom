@@ -23,15 +23,8 @@ Partial Class frmPdv
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmPdv))
         Me.lstCup = New System.Windows.Forms.ListBox()
-        Me.btnVnd = New System.Windows.Forms.Button()
-        Me.btnQtd = New System.Windows.Forms.Button()
-        Me.btnRmv = New System.Windows.Forms.Button()
-        Me.btnDsc = New System.Windows.Forms.Button()
-        Me.btnEcr = New System.Windows.Forms.Button()
         Me.txtCod = New System.Windows.Forms.TextBox()
-        Me.btnPes = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.lblDesconto = New System.Windows.Forms.Label()
@@ -47,7 +40,6 @@ Partial Class frmPdv
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.lblTotal = New System.Windows.Forms.Label()
         Me.Label15 = New System.Windows.Forms.Label()
-        Me.pctCoupon = New System.Windows.Forms.PictureBox()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.lblHora = New System.Windows.Forms.Label()
         Me.lblData = New System.Windows.Forms.Label()
@@ -57,10 +49,14 @@ Partial Class frmPdv
         Me.Label2 = New System.Windows.Forms.Label()
         Me.lblQnt = New System.Windows.Forms.Label()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.pctCoupon = New System.Windows.Forms.PictureBox()
+        Me.lblInstrucao = New System.Windows.Forms.Label()
         Me.Panel2.SuspendLayout()
         Me.Panel3.SuspendLayout()
-        CType(Me.pctCoupon, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
+        CType(Me.pctCoupon, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'lstCup
@@ -74,76 +70,6 @@ Partial Class frmPdv
         Me.lstCup.TabIndex = 0
         Me.lstCup.TabStop = False
         '
-        'btnVnd
-        '
-        Me.btnVnd.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnVnd.BackColor = System.Drawing.Color.White
-        Me.btnVnd.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnVnd.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnVnd.Location = New System.Drawing.Point(696, 187)
-        Me.btnVnd.Name = "btnVnd"
-        Me.btnVnd.Size = New System.Drawing.Size(146, 78)
-        Me.btnVnd.TabIndex = 1
-        Me.btnVnd.TabStop = False
-        Me.btnVnd.Text = "Efetuar Venda" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "(Barra de Espaço)"
-        Me.btnVnd.UseVisualStyleBackColor = False
-        '
-        'btnQtd
-        '
-        Me.btnQtd.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnQtd.BackColor = System.Drawing.Color.White
-        Me.btnQtd.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnQtd.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnQtd.Location = New System.Drawing.Point(848, 187)
-        Me.btnQtd.Name = "btnQtd"
-        Me.btnQtd.Size = New System.Drawing.Size(168, 78)
-        Me.btnQtd.TabIndex = 2
-        Me.btnQtd.TabStop = False
-        Me.btnQtd.Text = "Quantidade" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "(F2)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
-        Me.btnQtd.UseVisualStyleBackColor = False
-        '
-        'btnRmv
-        '
-        Me.btnRmv.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnRmv.BackColor = System.Drawing.Color.White
-        Me.btnRmv.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnRmv.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnRmv.Location = New System.Drawing.Point(848, 271)
-        Me.btnRmv.Name = "btnRmv"
-        Me.btnRmv.Size = New System.Drawing.Size(168, 76)
-        Me.btnRmv.TabIndex = 4
-        Me.btnRmv.TabStop = False
-        Me.btnRmv.Text = "Remover Produto" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "(F5)"
-        Me.btnRmv.UseVisualStyleBackColor = False
-        '
-        'btnDsc
-        '
-        Me.btnDsc.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnDsc.BackColor = System.Drawing.Color.White
-        Me.btnDsc.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnDsc.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnDsc.Location = New System.Drawing.Point(696, 271)
-        Me.btnDsc.Name = "btnDsc"
-        Me.btnDsc.Size = New System.Drawing.Size(146, 76)
-        Me.btnDsc.TabIndex = 3
-        Me.btnDsc.TabStop = False
-        Me.btnDsc.Text = "Desconto " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "(F3)"
-        Me.btnDsc.UseVisualStyleBackColor = False
-        '
-        'btnEcr
-        '
-        Me.btnEcr.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnEcr.BackColor = System.Drawing.Color.White
-        Me.btnEcr.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnEcr.Font = New System.Drawing.Font("Century Gothic", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnEcr.Location = New System.Drawing.Point(848, 105)
-        Me.btnEcr.Name = "btnEcr"
-        Me.btnEcr.Size = New System.Drawing.Size(168, 76)
-        Me.btnEcr.TabIndex = 5
-        Me.btnEcr.TabStop = False
-        Me.btnEcr.Text = "Encerrar (Esc)"
-        Me.btnEcr.UseVisualStyleBackColor = False
-        '
         'txtCod
         '
         Me.txtCod.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -155,18 +81,6 @@ Partial Class frmPdv
         Me.txtCod.Size = New System.Drawing.Size(316, 40)
         Me.txtCod.TabIndex = 0
         Me.txtCod.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        '
-        'btnPes
-        '
-        Me.btnPes.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnPes.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnPes.Location = New System.Drawing.Point(848, 353)
-        Me.btnPes.Name = "btnPes"
-        Me.btnPes.Size = New System.Drawing.Size(168, 53)
-        Me.btnPes.TabIndex = 7
-        Me.btnPes.TabStop = False
-        Me.btnPes.Text = "Pesquisar" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "(F8)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
-        Me.btnPes.UseVisualStyleBackColor = True
         '
         'Label1
         '
@@ -343,17 +257,6 @@ Partial Class frmPdv
         Me.Label15.TabIndex = 12
         Me.Label15.Text = "Total:"
         '
-        'pctCoupon
-        '
-        Me.pctCoupon.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.pctCoupon.Image = CType(resources.GetObject("pctCoupon.Image"), System.Drawing.Image)
-        Me.pctCoupon.Location = New System.Drawing.Point(844, 555)
-        Me.pctCoupon.Name = "pctCoupon"
-        Me.pctCoupon.Size = New System.Drawing.Size(168, 201)
-        Me.pctCoupon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.pctCoupon.TabIndex = 12
-        Me.pctCoupon.TabStop = False
-        '
         'Panel1
         '
         Me.Panel1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -452,25 +355,67 @@ Partial Class frmPdv
         '
         Me.Timer1.Enabled = True
         '
+        'Label6
+        '
+        Me.Label6.Anchor = System.Windows.Forms.AnchorStyles.Right
+        Me.Label6.Font = New System.Drawing.Font("Century Gothic", 15.0!, System.Drawing.FontStyle.Bold)
+        Me.Label6.Location = New System.Drawing.Point(812, 132)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(186, 182)
+        Me.Label6.TabIndex = 15
+        Me.Label6.Text = "Encerrar" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Pesquisar" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Remover produto" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Desconto" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Quantidade" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Efetuar Venda"
+        Me.Label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'Label7
+        '
+        Me.Label7.Anchor = System.Windows.Forms.AnchorStyles.Right
+        Me.Label7.Font = New System.Drawing.Font("Century Gothic", 15.0!, System.Drawing.FontStyle.Bold)
+        Me.Label7.Location = New System.Drawing.Point(719, 132)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(87, 182)
+        Me.Label7.TabIndex = 16
+        Me.Label7.Text = "Esc" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "F8" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "F5" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "F3" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "F2" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Espaço"
+        Me.Label7.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'pctCoupon
+        '
+        Me.pctCoupon.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.pctCoupon.Image = Global.Cuopom.My.Resources.Resources.pctCoupon_Image
+        Me.pctCoupon.Location = New System.Drawing.Point(844, 555)
+        Me.pctCoupon.Name = "pctCoupon"
+        Me.pctCoupon.Size = New System.Drawing.Size(168, 201)
+        Me.pctCoupon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.pctCoupon.TabIndex = 12
+        Me.pctCoupon.TabStop = False
+        '
+        'lblInstrucao
+        '
+        Me.lblInstrucao.Anchor = System.Windows.Forms.AnchorStyles.Right
+        Me.lblInstrucao.Font = New System.Drawing.Font("Century Gothic", 15.0!, System.Drawing.FontStyle.Bold)
+        Me.lblInstrucao.Location = New System.Drawing.Point(728, 290)
+        Me.lblInstrucao.Name = "lblInstrucao"
+        Me.lblInstrucao.Size = New System.Drawing.Size(227, 190)
+        Me.lblInstrucao.TabIndex = 17
+        Me.lblInstrucao.Text = "_____________________" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Selecione com as setas o produto desejado e aperte Enter." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Aperte Esc para cancelar."
+        Me.lblInstrucao.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.lblInstrucao.Visible = False
+        '
         'frmPdv
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(214, Byte), Integer), CType(CType(105, Byte), Integer), CType(CType(73, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(1024, 768)
+        Me.Controls.Add(Me.lblInstrucao)
+        Me.Controls.Add(Me.Label7)
+        Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.lblQnt)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.pctCoupon)
         Me.Controls.Add(Me.Panel3)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.btnPes)
         Me.Controls.Add(Me.txtCod)
-        Me.Controls.Add(Me.btnEcr)
-        Me.Controls.Add(Me.btnRmv)
-        Me.Controls.Add(Me.btnDsc)
-        Me.Controls.Add(Me.btnQtd)
-        Me.Controls.Add(Me.btnVnd)
         Me.Controls.Add(Me.lstCup)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "frmPdv"
@@ -481,22 +426,16 @@ Partial Class frmPdv
         Me.Panel2.PerformLayout()
         Me.Panel3.ResumeLayout(False)
         Me.Panel3.PerformLayout()
-        CType(Me.pctCoupon, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
+        CType(Me.pctCoupon, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
 
     Friend WithEvents lstCup As ListBox
-    Friend WithEvents btnVnd As Button
-    Friend WithEvents btnQtd As Button
-    Friend WithEvents btnRmv As Button
-    Friend WithEvents btnDsc As Button
-    Friend WithEvents btnEcr As Button
     Friend WithEvents txtCod As TextBox
-    Friend WithEvents btnPes As Button
     Friend WithEvents Label1 As Label
     Friend WithEvents Panel2 As Panel
     Friend WithEvents Label14 As Label
@@ -522,4 +461,7 @@ Partial Class frmPdv
     Friend WithEvents lblDesconto As Label
     Friend WithEvents Label5 As Label
     Friend WithEvents Timer1 As Timer
+    Friend WithEvents Label6 As Label
+    Friend WithEvents Label7 As Label
+    Friend WithEvents lblInstrucao As Label
 End Class

@@ -14,56 +14,64 @@
     Dim valorTotal As Double = 0
     Dim subtotal As Double = 0
     Public descontos As Integer = 0
-    Dim indiceAtual As Integer = 11
+    Dim indiceAtual As Integer = 9
+    Public valorProdutoRemovidoTotal As Double
     Private Sub txtCod_Keydown(sender As Object, e As KeyEventArgs) Handles txtCod.KeyDown
         Select Case e.KeyCode
-            '-----------------------------------------------------------------------------'
-            Case Keys.Enter                                                               '
-                buscarProdutoPDV(txtCod.Text, Convert.ToDouble(lblQnt.Text), indiceAtual) '
-                txtCod.Clear()                                                            '
-            '-----------------------------------------------------------------------------'
-            '-----------------------'
-            Case Keys.F8            '
-                pesquisarProduto()  '
-            '-----------------------'
-            '-----------------------'
-            Case Keys.F5            '
-                avisar(e.KeyCode)   '
-            '-----------------------'
-            '-------------------------------------------------------
-            Case Keys.Escape                                        '
-                If funcionarioAtual.cargo = "Administrador" Then    '
-                    Aberto = False                                  '
-                    reset()                                         '
-                    limparRegistroVenda()                           '
-                Else                                                '
-                    frmConfirmar.ShowDialog()                       '
-                    If trust = True Then                            '
-                        trust = False                               '
-                        Aberto = False                              '
-                        reset()                                     '
-                        limparRegistroVenda()                       '
-                        avisar("Código de administrador inserido")  '
-                    End If                                          '
-                End If                                              '
-                '---------------------------------------------------'
-            '-------------------------------------------------------'
-            Case Keys.F3                                            '
-                If funcionarioAtual.cargo = "Administrador" Then    '
-                    frmDesconto.ShowDialog()                        '
-                Else                                                '
-                    frmConfirmar.ShowDialog()                       '
-                    If trust Then                                   '
-                        trust = False                               '
-                        frmDesconto.ShowDialog()                    '
-                    Else                                            '
-                        avisar("Código Incorreto.")                 '
-                    End If                                          '
-                End If                                              '
-                '---------------------------------------------------'
-            Case Keys.Space
+            '-----------------------------------------------------------------------------'|
+            Case Keys.Enter                                                               '|
+                buscarProdutoPDV(txtCod.Text, Convert.ToDouble(lblQnt.Text), indiceAtual) '|
+                txtCod.Clear()                                                            '|
+            '-----------------------------------------------------------------------------'|
+            '-----------------------'|
+            Case Keys.F8            '|
+                pesquisarProduto()  '|
+            '-----------------------'|
+            '-----------------------------------------------------------'|
+            Case Keys.F5                                                '|
+                If Aberto Then
+                    lstCup.Focus()
+                    txtCod.Enabled = False
+                    lblInstrucao.Visible = True
+                End If
 
-                avisar(e.KeyCode)
+
+            '-----------------------------------------------------------'|
+            '-------------------------------------------------------'|
+            Case Keys.Escape                                        '|
+                If funcionarioAtual.cargo = "Administrador" Then    '|
+                    Aberto = False                                  '|
+                    reset()                                         '|
+                    limparRegistroVenda()                           '|
+                Else                                                '|
+                    frmConfirmar.ShowDialog()                       '|
+                    If trust = True Then                            '|
+                        trust = False                               '|
+                        Aberto = False                              '|
+                        reset()                                     '|
+                        limparRegistroVenda()                       '|
+                        avisar("Código de administrador inserido")  '|
+                    End If                                          '|
+                End If                                              '|
+                indiceAtual = 9                                     '|
+                '---------------------------------------------------'|
+            '-------------------------------------------------------'|
+            Case Keys.F3                                            '|
+                If funcionarioAtual.cargo = "Administrador" Then    '|
+                    frmDesconto.ShowDialog()                        '|
+                Else                                                '|
+                    frmConfirmar.ShowDialog()                       '|
+                    If trust Then                                   '|
+                        trust = False                               '|
+                        frmDesconto.ShowDialog()                    '|
+                        lblDesconto.Text = descontos                '|
+                    Else                                            '|
+                        avisar("Código Incorreto.")                 '|
+                    End If                                          '|
+                End If                                              '|
+                '---------------------------------------------------'|
+            Case Keys.Space
+                finalizarVenda()
             Case Keys.F2
                 Dim qnt As Double
                 If Double.TryParse(txtCod.Text, qnt) Then
@@ -85,6 +93,7 @@
         lblPreUnt.Text = "-"
         lblTotal.Text = "-"
         lblQnt.Text = "1"
+        txtCod.Enabled = True
 
 
         If Aberto Then
@@ -97,8 +106,10 @@
             lstCup.Items.Add($"{"Código",-13}{"Descrição",-18}    Preço")
             lstCup.Items.Add($"{"Quantidade",-6} {"Preço Total",29}")
             divisor()
-            indiceAtual = 11
+            indiceAtual = 9
+
         End If
+
 
     End Sub
 
@@ -163,6 +174,30 @@
             Case " "
                 e.KeyChar = ""
         End Select
+    End Sub
+
+    Private Sub lstCup_KeyDown(sender As Object, e As KeyEventArgs) Handles lstCup.KeyDown
+        If Not txtCod.Enabled Then
+            If e.KeyCode = Keys.Enter Then
+                If removerDoCarrinho(lstCup.SelectedIndex) Then
+                    lstCup.Items.Add("------------Produto removido------------")
+                    lstCup.Items.Add(lstCup.SelectedItem)
+                    lstCup.Items.Add("----------------------------------------")
+                    subtotal -= valorProdutoRemovidoTotal
+                    valorProdutoRemovidoTotal = 0
+                    indiceAtual += 3
+                End If
+            End If
+            If e.KeyCode = Keys.Escape Then
+                txtCod.Enabled = True
+                txtCod.Text = ""
+                txtCod.Focus()
+                lblInstrucao.Visible = False
+            End If
+        End If
+    End Sub
+    Sub finalizarVenda()
+
     End Sub
 End Class
 

@@ -1,5 +1,6 @@
 ﻿Imports MySql.Data
 Module DB
+#Region "Cabeçalho de Declarações"
     '---------------------------------------------------------------------------------------
     '                                 CABEÇALHO DE DECLARAÇÕES
     '---------------------------------------------------------------------------------------
@@ -17,7 +18,10 @@ Module DB
     Public portaImpressora As String
     Public descontoMaximo As Double
     Public nomeDaEmpresa As String
+#End Region
 
+
+#Region "Funções de consumo do Banco de Dados"
     '---------------------------------------------------------------------------------------
     '                           Funções de consumo do Banco de dados
     '---------------------------------------------------------------------------------------
@@ -124,12 +128,21 @@ Module DB
     Sub erroDB(ex As Exception)
         avisar("Ocorreu um erro ao acessar a base de dados: " + ex.Message)
     End Sub 'ok
+#End Region
 
 
+
+#Region "Sub e funções do PDV"
     '-----------------------------------------------------------------------
     '                           Sub e Funções do PDV
     '-----------------------------------------------------------------------
-
+    Sub armazenarVenda()
+        Try
+            abrirBanco()
+        Catch ex As Exception
+            avisar(ex.Message)
+        End Try
+    End Sub
     Sub buscarProdutoPDV(cod As String, qnt As Double, indice As Integer)
         cmd.CommandText = $"SELECT * FROM produto_ref WHERE cod_produto = '{preencherVazio(cod)}'"
         Try
@@ -138,7 +151,7 @@ Module DB
             If dr.HasRows() Then
                 dr.Read()
 
-                cmd.CommandText = $"INSERT INTO venda_atual (indice, cod_prod, qnt, preco_prod, preco_total) values ({indice}, '{dr("cod_produto")}', '{(qnt).ToString.Replace(",", ".")}',{dr("preco_venda")},{(Convert.ToDouble(dr("preco_venda")) * qnt).ToString.Replace(",", ".")})"
+                cmd.CommandText = $"INSERT INTO venda_atual (indice, cod_prod, qnt, preco_prod, preco_total) values ('{indice}', '{dr("cod_produto")}', '{(qnt).ToString.Replace(",", ".")}','{dr("preco_venda").ToString.Replace(",", ".")}',{(Convert.ToDouble(dr("preco_venda")) * qnt).ToString.Replace(",", ".")})"
                 'MessageBox.Show(cmd.CommandText)
                 frmPdv.adicionarProdutoCupom(dr, qnt)
                 dr.Close()
@@ -157,9 +170,33 @@ Module DB
 
     End Sub 'ok
 
-    Sub removerDoCarrinho(index As Integer)
+    Function removerDoCarrinho(index As Integer) As Boolean
+        Dim encontrado As Boolean = False
+        cmd.CommandText = $"select * from venda_atual where indice = {index}"
+        Try
+            abrirBanco()
+            Dim dr As MySqlClient.MySqlDataReader = cmd.ExecuteReader()
+            If dr.HasRows() Then
+                dr.Read()
+                frmPdv.valorProdutoRemovidoTotal = Convert.ToDouble(dr("preco_total"))
+                dr.Close()
+                cmd.CommandText = $"delete from venda_atual where indice = {index}"
+                cmd.ExecuteNonQuery()
+                encontrado = True
+            Else
+                avisar("A linha escolhida não é um item.")
+                encontrado = False
+            End If
 
-    End Sub
+
+        Catch ex As Exception
+            avisar(ex.Message)
+        Finally
+            zerarComando()
+            fecharBanco()
+        End Try
+        Return encontrado
+    End Function 'ok
 
     Sub limparRegistroVenda()
         cmd.CommandText = "delete from venda_atual"
@@ -179,7 +216,7 @@ Module DB
     Function preencherVazio(cod As String) As String
         Dim aux As String = New String("0", 13 - cod.Length)
         Return (aux + cod)
-    End Function
+    End Function 'ok
 
     Sub buscarProdutoPesquisa(cod As String)
         Dim aux As UInt64
@@ -216,7 +253,11 @@ Module DB
             End Try
         End If
 
-    End Sub
+    End Sub 'ok
+#End Region
+
+
+
 
 End Module
 

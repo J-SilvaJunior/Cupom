@@ -103,6 +103,12 @@
     <Compile Include="frmDesconto.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmFinalizar.Designer.vb">
+      <DependentUpon>frmFinalizar.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmFinalizar.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmFun.Designer.vb">
       <DependentUpon>frmFun.vb</DependentUpon>
     </Compile>
@@ -157,6 +163,9 @@
     <EmbeddedResource Include="frmDesconto.resx">
       <DependentUpon>frmDesconto.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmFinalizar.resx">
+      <DependentUpon>frmFinalizar.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmFun.resx">
       <DependentUpon>frmFun.vb</DependentUpon>
     </EmbeddedResource>
@@ -191,6 +200,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="pctCoupon.Image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="options.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
