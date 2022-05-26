@@ -326,6 +326,26 @@ Module DB
         End Try
         Return insercao
     End Function
+
+    Function consumirInfoRelatorio(aux As String) As MySqlClient.MySqlDataReader
+        Dim dr As MySqlClient.MySqlDataReader
+        Try
+            abrirBanco()
+            cmd.CommandText = $"select * from venda where funcionario = '{aux}'"
+            dr = cmd.ExecuteReader()
+
+        Catch ex As Exception
+            avisar(ex.Message)
+        Finally
+            zerarComando()
+
+        End Try
+
+        Return dr
+    End Function
+
+
+
 End Module
 
 

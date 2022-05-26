@@ -22,7 +22,7 @@ Public Class frmLogin
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-
+        frmConfig.ShowDialog()
     End Sub
 
     Private Sub Form1_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
@@ -48,6 +48,6 @@ Public Class frmLogin
             portaImpressora = rdr.ReadLine()                    'Porta COM da impressora
             nomeDaEmpresa = rdr.ReadLine()                      'Empresa
         End If
-
+        rdr.Close()
     End Sub
 End Class
