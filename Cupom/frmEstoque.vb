@@ -18,6 +18,10 @@
             Else
                 avisar("Produto alterado com sucesso!")
             End If
+            txtCod.Clear()
+            txtCompra.Clear()
+            txtDesc.Clear()
+            txtVenda.Clear()
         Else
             avisar("Verifique os campos digitados e tente novamente")
         End If

@@ -42,7 +42,11 @@ Public Class frmPdv
             '-----------------------------------------------------------'|
             '-------------------------------------------------------'|
             Case Keys.Escape                                        '|
-                If funcionarioAtual.cargo = "Administrador" Then    '|
+                If Not Aberto Then
+                    reset()
+                    limparRegistroVenda()
+                    Close()
+                ElseIf funcionarioAtual.cargo = "Administrador" Then    '|
                     Aberto = False                                  '|
                     reset()                                         '|
                     limparRegistroVenda()                           '|

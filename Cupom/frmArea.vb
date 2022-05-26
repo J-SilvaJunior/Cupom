@@ -53,7 +53,9 @@
     End Sub
 
     Private Sub btnRelatorio_Click(sender As Object, e As EventArgs) Handles btnRelatorio.Click
-        'frmRelatorio.show()
+        Hide()
+        frmRelatorio.ShowDialog()
+        Show()
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick

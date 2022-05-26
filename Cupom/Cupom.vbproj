@@ -158,6 +158,12 @@
     <Compile Include="frmPesquisa.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmRelatorio.Designer.vb">
+      <DependentUpon>frmRelatorio.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmRelatorio.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -206,6 +212,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmPesquisa.resx">
       <DependentUpon>frmPesquisa.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRelatorio.resx">
+      <DependentUpon>frmRelatorio.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
