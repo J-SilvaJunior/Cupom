@@ -45,7 +45,11 @@
     End Sub
 
     Private Sub btnEstoque_Click(sender As Object, e As EventArgs) Handles btnEstoque.Click
-        'frmEstoque.show()
+        Hide()
+        Dim frmEstoqueProxy As frmEstoque = New frmEstoque()
+        frmEstoqueProxy.ShowDialog()
+        frmEstoqueProxy.Dispose()
+        Show()
     End Sub
 
     Private Sub btnRelatorio_Click(sender As Object, e As EventArgs) Handles btnRelatorio.Click

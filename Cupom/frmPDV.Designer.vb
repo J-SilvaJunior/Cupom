@@ -392,7 +392,7 @@ Partial Class frmPdv
         '
         Me.lblInstrucao.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.lblInstrucao.Font = New System.Drawing.Font("Century Gothic", 15.0!, System.Drawing.FontStyle.Bold)
-        Me.lblInstrucao.Location = New System.Drawing.Point(728, 290)
+        Me.lblInstrucao.Location = New System.Drawing.Point(727, 290)
         Me.lblInstrucao.Name = "lblInstrucao"
         Me.lblInstrucao.Size = New System.Drawing.Size(227, 190)
         Me.lblInstrucao.TabIndex = 17

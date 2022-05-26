@@ -16,7 +16,6 @@ Module DB
 
     Public caixaAtual As Integer
     Public portaImpressora As String
-    Public descontoMaximo As Double
     Public nomeDaEmpresa As String
 #End Region
 
@@ -286,9 +285,47 @@ Module DB
     End Sub 'ok
 #End Region
 
+    Public Function UnAccent(ByVal aString As String) As String
+        Dim toReplace() As Char = "àèìòùÀÈÌÒÙ äëïöüÄËÏÖÜ âêîôûÂÊÎÔÛ áéíóúÁÉÍÓÚðÐýÝ ãñõÃÑÕšŠžŽçÇåÅøØ".ToCharArray
+        Dim replaceChars() As Char = "aeiouAEIOU aeiouAEIOU aeiouAEIOU aeiouAEIOUdDyY anoANOsSzZcCaAoO".ToCharArray
+        For index As Integer = 0 To toReplace.GetUpperBound(0)
+            aString = aString.Replace(toReplace(index), replaceChars(index))
+        Next
+        Return aString
+    End Function
 
-
-
+    Function cadastrarProduto(cod As String, descr As String, compra As String, venda As String) As Boolean
+        Dim insercao As Boolean = False
+        Try
+            abrirBanco()
+            cmd.CommandText = $"select * from produto_ref where cod_produto = {preencherVazio(cod)};"
+            Dim dr As MySqlClient.MySqlDataReader = cmd.ExecuteReader()
+            If dr.HasRows() Then
+                dr.Read()
+                dr.Close()
+                cmd.CommandText = $"update produto_ref set " &
+                                  $"cod_produto = '{cod}', " &
+                                  $"descricao = '{descr}', " &
+                                  $"preco_compra = '{compra.ToString().Replace(",", ".")}', " &
+                                  $"preco_venda = '{venda.ToString().Replace(",", ".")}' " &
+                                  $"where  cod_produto = '{cod}'"
+                cmd.ExecuteNonQuery()
+            Else
+                dr.Close()
+                cmd.CommandText = $"insert into produto_ref " &
+                                  $"(cod_produto, descricao, preco_compra, preco_venda) values " &
+                                  $"('{cod}','{descr}','{compra.ToString().Replace(",", ".")}','{venda.ToString().Replace(",", ".")}')"
+                insercao = True
+                cmd.ExecuteNonQuery()
+            End If
+        Catch ex As Exception
+            avisar(ex.Message)
+        Finally
+            fecharBanco()
+            zerarComando()
+        End Try
+        Return insercao
+    End Function
 End Module
 
 

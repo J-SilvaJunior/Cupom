@@ -38,7 +38,6 @@ Public Class frmLogin
             Dim wtr As StreamWriter = New StreamWriter("options.cfg", False)
             wtr.WriteLine("0")          'Caixa #
             wtr.WriteLine("COM1")       'Porta COM da impressora
-            wtr.WriteLine("10")         'Desconto máximo
             wtr.WriteLine("Empresa")    'Empresa
             wtr.Close()
         End If
@@ -47,7 +46,6 @@ Public Class frmLogin
         If File.Exists("options.cfg") Then
             caixaAtual = rdr.ReadLine()                         'Caixa #
             portaImpressora = rdr.ReadLine()                    'Porta COM da impressora
-            descontoMaximo = Convert.ToDouble(rdr.ReadLine())   'Desconto máximo
             nomeDaEmpresa = rdr.ReadLine()                      'Empresa
         End If
 

@@ -102,7 +102,7 @@ Public Class frmPdv
         If Aberto Then
             divisor()
             lstCup.Items.Add("")
-            lstCup.Items.Add("           Mercado do Ricardão           ")
+            lstCup.Items.Add("           Mercado do Ricardão        ")
             lstCup.Items.Add("")
             lstCup.Items.Add($"{Now(),40}")
             divisor()
@@ -127,7 +127,7 @@ Public Class frmPdv
         End If
 
         '-----------------|Primeira linha adicionada|----------------------------------------------------------------------------'|
-        lstCup.Items.Add($"{dr("cod_produto"),-13}{dr("descricao"),-19}{Convert.ToDouble(dr("preco_venda")).ToString("c"),-40}") '|
+        lstCup.Items.Add($"{dr("cod_produto")}{dr("descricao"),-19}{Convert.ToDouble(dr("preco_venda")).ToString("c"),-8}") '|
         '------------------------------------------------------------------------------------------------------------------------'|
 
         '-----------------|Segunda linha adicionada|----------------------------------------------------'|
@@ -207,11 +207,18 @@ Public Class frmPdv
         If finalizado Then
             finalizado = False
             Aberto = False
-            Dim wtr As StreamWriter = New StreamWriter($"cupons\{Now.ToString("yy-MM-dd hh-mm-ss")}.txt", False)
+            Dim aux As String = Now.ToString("yy-MM-dd hh-mm-ss")
+            Dim wtr As StreamWriter = New StreamWriter($"{aux}.txt", False)
+            IniciaPorta("COM1")
             For i = 0 To lstCup.Items.Count - 1
-                wtr.WriteLine(lstCup.Items(i))
+                wtr.WriteLine(Convert.ToString(lstCup.Items(i)))
+                FormataTX(UnAccent(lstCup.Items(i) & Chr(13) & Chr(10)), 0, 0, 0, 0, 0)
             Next
+
             wtr.Close()
+            AcionaGuilhotina(1)
+            FechaPorta()
+
             reset()
             limparRegistroVenda()
             qnt_items = 0

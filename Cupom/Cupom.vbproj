@@ -46,6 +46,25 @@
   <PropertyGroup>
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DocumentationFile>Coupom.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DocumentationFile>Coupom.xml</DocumentationFile>
+    <Optimize>true</Optimize>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="MySql.Data, Version=6.7.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <HintPath>..\packages\MySql.Data.6.7.9\lib\net40\MySql.Data.dll</HintPath>
@@ -103,6 +122,12 @@
     <Compile Include="frmDesconto.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmEstoque.designer.vb">
+      <DependentUpon>frmEstoque.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmEstoque.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmFinalizar.Designer.vb">
       <DependentUpon>frmFinalizar.vb</DependentUpon>
     </Compile>
@@ -149,6 +174,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="printerModule.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Form1.resx">
@@ -162,6 +188,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmDesconto.resx">
       <DependentUpon>frmDesconto.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEstoque.resx">
+      <DependentUpon>frmEstoque.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmFinalizar.resx">
       <DependentUpon>frmFinalizar.vb</DependentUpon>
